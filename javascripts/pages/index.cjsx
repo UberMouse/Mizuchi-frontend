@@ -14,5 +14,9 @@ module.exports = React.createClass
     R = React.DOM
     shows = @state.shows.map (show)->
       new ShowListing({show})
-    R.ul null,
-      shows
+    R.table {className: 'pure-table pure-u-1'},
+      R.thead null,
+        R.tr null,
+          R.th null, 'Show Name'
+      R.tbody null,
+        shows

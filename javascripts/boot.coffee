@@ -12,6 +12,8 @@ shows = [{
   name: 'Akame ga Kill!'
 }, {
   name: 'Gekkan Shoujo Nozaki-kun'
+}, {
+  name: 'Hunter x Hunter'
 }];
 
 stores =

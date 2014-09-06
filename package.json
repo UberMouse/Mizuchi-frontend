@@ -29,7 +29,11 @@
       "webpack": "~1.4.0",
       "webpack-dev-server": "1.6.x",
       "react-hot-loader": "*",
-      "coffee-loader": "*"
+      "coffee-loader": "*",
+      "sass-loader": "*",
+      "style-loader": "*",
+      "css-loader": "*",
+      "request": "~2.42.0"
    },
    "private":true,
    "license":"MIT"

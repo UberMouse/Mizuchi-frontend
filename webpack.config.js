@@ -19,12 +19,14 @@ module.exports = {
     resolve: {
         // Allow to omit extensions when requiring these files
         extensions: ['', '.js', '.jsx', '.coffee', '.cjsx'] ,
-        root: path.join(__dirname, 'javascripts')
+        root: [path.join(__dirname, 'javascripts'), path.join(__dirname, 'styles')]
     },
     module: {
         loaders: [
             { test: /\.cjsx/, loaders: ['coffee', 'react-hot'] },
-            { test: /\.coffee$/, loader: 'coffee'}
+            { test: /\.coffee$/, loader: 'coffee'},
+            { test: /\.sass$/, exclude: /\.useable.sass$/, loaders: ['style', 'css', 'sass']},
+            { test: /\.useable.sass$/, loaders: ['style/useable', 'css', 'sass']}
         ]
     },
     plugins: [
