@@ -1,7 +1,7 @@
 React = require('react')
 Nav = require('components/nav')
 R = React.DOM
-require('main.sass')
+require('main.scss')
 
 module.exports = React.createClass
   render: ->

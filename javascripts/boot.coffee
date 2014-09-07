@@ -3,10 +3,13 @@ Fluxxor = require('fluxxor')
 ShowStore = require('stores/show_store')
 actions = require('actions')
 router = require('rrouter')
+WebsocketHandler = require('websocket_handler')
 Routes = router.Routes
 Route = router.Route
 
 window.React = React
+ws = new WebsocketHandler()
+ws.start()
 
 shows = [{
   name: 'Akame ga Kill!'

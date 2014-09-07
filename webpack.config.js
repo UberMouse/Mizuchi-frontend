@@ -25,8 +25,8 @@ module.exports = {
         loaders: [
             { test: /\.cjsx/, loaders: ['coffee', 'react-hot'] },
             { test: /\.coffee$/, loader: 'coffee'},
-            { test: /\.sass$/, exclude: /\.useable.sass$/, loaders: ['style', 'css', 'sass']},
-            { test: /\.useable.sass$/, loaders: ['style/useable', 'css', 'sass']}
+            { test: /\.scss$/, exclude: /\.useable.scss$/, loaders: ['style', 'css', 'sass']},
+            { test: /\.useable.scss$/, loaders: ['style/useable', 'css', 'sass']}
         ]
     },
     plugins: [
