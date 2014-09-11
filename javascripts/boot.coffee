@@ -1,6 +1,7 @@
 React = require('react')
 Fluxxor = require('fluxxor')
 ShowStore = require('stores/show_store')
+SyncStore = require('stores/sync_store')
 actions = require('actions')
 router = require('rrouter')
 WebsocketHandler = require('websocket_handler')
@@ -19,10 +20,13 @@ shows = [{
   name: 'Hunter x Hunter'
 }];
 
+syncStore = new SyncStore({handler: ws})
 stores =
-  ShowStore: new ShowStore({shows: shows})
+  ShowStore: new ShowStore({shows})
+  SyncStore: syncStore
 flux = new Fluxxor.Flux(stores, actions)
 
+syncStore.setFlux(flux)
 Index = require('pages/index')
 CreateShow = require('pages/create_show')
 routes = (
