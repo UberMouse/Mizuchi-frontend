@@ -8,7 +8,7 @@ module.exports = React.createClass
   handleAddShow: (e)->
     e.preventDefault()
     showName = @refs.showName.getDOMNode().value
-    @getFlux().actions.createShow(name: showName)
+    @getFlux().actions.createShow(id: -1, name: showName, tvdb_id: "1", hummingbird_id: "1")
 
   render: ->
     R.div {className: 'pure-u-1'},
