@@ -11,10 +11,10 @@ Route = router.Route
 
 window.React = React
 
-onResponse = (args)->
+onResponse = (action)->
   syncStore = new SyncStore({dispatcher: SyncDispatcher})
   stores =
-    ShowStore: new ShowStore({shows: args.preload.shows})
+    ShowStore: new ShowStore({shows: action.args.shows})
     SyncStore: syncStore
   flux = new Fluxxor.Flux(stores, actions)
   window.flux = flux
@@ -33,7 +33,7 @@ onResponse = (args)->
   router.start routes, (view)->
     React.renderComponent(new Layout({view}), document.getElementById("app"))
 
-SyncDispatcher.dispatch JSON.stringify({
+SyncDispatcher.dispatch {
   name: 'INIT',
   onResponse
-})
+}

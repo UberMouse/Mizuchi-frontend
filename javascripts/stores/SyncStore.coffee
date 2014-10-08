@@ -6,21 +6,16 @@ module.exports = do ->
   self = @
   Fluxxor.createStore
     initialize: (options)->
-      @ws_handler = options.handler
-      @ws_handler.registerCallback(@handleServerMessage)
+      @dispatcher = options.dispatcher
       for action of Constants
         @bindActions(action, @handleAction)
-    handleServerMessage: (message)->
-      action_message = JSON.parse(message.data)
-      self.flux.actions[action_message.name](action_message.args)
     handleAction: (payload, type)->
-      foo = JSON.stringify(
+      foo =
         name: type,
-        args: JSON.stringify(payload),
+        args: payload,
         id: "1"
-      )
       console.log(foo)
-      @ws_handler.send(foo)
+      @dispatcher.dispatch(foo)
       console.log("Got action with payload")
       console.log(payload)
       console.log("and type: #{type}")
