@@ -11,7 +11,7 @@ class Websocket
     console.log("Websocket connection closed")
   handleMessage = (message)->
     console.log("Recieved message: #{message.data}")
-    messageCbs.forEach (cb)-> cb(message)
+    messageCbs.forEach (cb)-> cb(message.data)
 
   start: (onOpenCb)->
     socket = new WebSocket('ws://localhost:9000/ws')
