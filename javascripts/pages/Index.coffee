@@ -9,4 +9,4 @@ module.exports = React.createClass
     flux = @getFlux()
     {shows: flux.store("ShowStore").getState().shows}
   render: ->
-    R.p null, "foo"
+    React.DOM.p null, "foo"
