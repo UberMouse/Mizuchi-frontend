@@ -18,7 +18,8 @@ class Websocket
 
     socket.onopen = ()->
       handleConnection()
-      onOpenCb()
+      if(onOpenCb)
+        onOpenCb()
     socket.onerror = handleError
     socket.onclose = handleClose
     socket.onmessage = handleMessage
