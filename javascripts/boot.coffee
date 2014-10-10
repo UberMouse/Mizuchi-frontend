@@ -35,5 +35,6 @@ onResponse = (action)->
 
 SyncDispatcher.dispatch {
   name: 'INIT',
-  onResponse
+  args:
+    onResponse: onResponse
 }

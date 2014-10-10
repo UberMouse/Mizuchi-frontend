@@ -11,7 +11,10 @@ class Dispatcher
     if(responseMappings[action.id])
       responseMappings[action.id](action)
   processQueueItem = (ws)->
+    if(sendQueue.length == 0)
+      return
     action = sendQueue.shift()
+    action.args = JSON.stringify(action.args)
     ws.send JSON.stringify(action)
   generateId = ->
     nums = _.map _.range(10), ->
@@ -30,7 +33,7 @@ class Dispatcher
       action.id = generateId()
     console.log(action)
     sendQueue.push(action)
-    responseMappings[action.id] = action.onResponse
+    responseMappings[action.id] = action.args.onResponse
 
 
 module.exports = new Dispatcher(new WebsocketHandler())
