@@ -5,7 +5,9 @@ module.exports = do ->
   actions = {}
 
   for actionName of Constants
-    actions[ChangeCase.camelCase(actionName)] = (args)->
-      @dispatch(Constants[actionName], args)
-      
+    actions[ChangeCase.camelCase(actionName)] = ((actionName)->
+      (args)->
+        @dispatch(Constants[actionName], args)
+      )(actionName)
+    
   actions
