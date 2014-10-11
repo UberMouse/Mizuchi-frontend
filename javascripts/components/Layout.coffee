@@ -5,7 +5,8 @@ require('main.scss')
 
 module.exports = React.createClass
   render: ->
-    R.div {className: 'pure-g'},
-      R.nav {className: 'pure-u-1'},
-        new Nav(null),
-      @props.view
+    R.div null,
+      R.nav null,
+        new Nav()
+      R.div {className: 'col-md-12'},
+        @props.view

@@ -34,6 +34,7 @@
       "webpack": "~1.4.0",
       "webpack-dev-server": "1.6.x",
       "react-hot-loader": "*",
+      "jsx-loader": "*",
       "coffee-loader": "*",
       "sass-loader": "*",
       "style-loader": "*",
