@@ -4,7 +4,7 @@ Constants = require('Constants')
 module.exports = Fluxxor.createStore
   initialize: (options)->
     @shows = options.shows || []
-    @bindActions(Constants.CREATE_SHOW, @handleCreateShow)
+    @bindActions(Constants.REGISTER_SHOW, @handleCreateShow)
   getState: ->
     shows: @shows
   handleCreateShow: (args)->

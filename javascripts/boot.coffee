@@ -4,7 +4,6 @@ ShowStore = require('stores/ShowStore')
 SyncStore = require('stores/SyncStore')
 actions = require('Actions')
 router = require('rrouter')
-WebsocketHandler = require('WebsocketHandler')
 Action = require('sync/Action')
 SyncDispatcher = require('sync/Dispatcher')
 Routes = router.Routes
@@ -12,11 +11,10 @@ Route = router.Route
 
 window.React = React
 
-InitAction = new Action('INIT', '')
-InitAction.onResponse = (args)->
-  syncStore = new SyncStore({handler: ws})
+onResponse = (action)->
+  syncStore = new SyncStore({dispatcher: SyncDispatcher})
   stores =
-    ShowStore: new ShowStore({shows: args.preload.shows})
+    ShowStore: new ShowStore({shows: action.args.shows})
     SyncStore: syncStore
   flux = new Fluxxor.Flux(stores, actions)
   window.flux = flux
@@ -35,6 +33,8 @@ InitAction.onResponse = (args)->
   router.start routes, (view)->
     React.renderComponent(new Layout({view}), document.getElementById("app"))
 
-ws = new WebsocketHandler()
-ws.start ->
-  window.flux.actions.init()
+SyncDispatcher.dispatch {
+  name: 'INIT',
+  args:
+    onResponse: onResponse
+}
